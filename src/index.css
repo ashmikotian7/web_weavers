@@ -2,41 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* IEEE Student Branch Design System - Modern & Professional */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    /* IEEE Brand Colors */
+    --ieee-blue: 207 100% 31%;  /* #00629B */
+    --ieee-blue-light: 207 85% 45%;
+    --ieee-blue-dark: 207 100% 20%;
+    --ieee-teal: 180 85% 35%;
+    --ieee-cyan: 190 95% 45%;
+    
+    /* Background System */
+    --background: 210 20% 98%;
+    --background-secondary: 210 15% 95%;
+    --foreground: 210 15% 15%;
+    
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --card-foreground: 210 15% 15%;
+    --card-hover: 210 20% 98%;
+    
+    /* Primary System - IEEE Blue */
+    --primary: var(--ieee-blue);
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: var(--ieee-blue-light);
+    --primary-glow: var(--ieee-blue-light);
+    
+    /* Secondary System */
+    --secondary: 210 15% 90%;
+    --secondary-foreground: 210 15% 25%;
+    --secondary-hover: 210 15% 85%;
+    
+    /* Accent System - Teal/Cyan */
+    --accent: var(--ieee-teal);
+    --accent-foreground: 0 0% 100%;
+    --accent-hover: var(--ieee-cyan);
+    
+    /* Muted System */
+    --muted: 210 15% 92%;
+    --muted-foreground: 210 10% 45%;
+    
+    /* UI Elements */
+    --border: 210 15% 88%;
+    --input: 210 15% 94%;
+    --ring: var(--ieee-blue);
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--ieee-blue)), hsl(var(--ieee-blue-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--ieee-blue)) 0%, hsl(var(--ieee-teal)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(210 15% 98% / 0.9));
+    --gradient-mesh: radial-gradient(circle at 20% 80%, hsl(var(--ieee-blue) / 0.1) 0%, transparent 50%),
+                     radial-gradient(circle at 80% 20%, hsl(var(--ieee-teal) / 0.1) 0%, transparent 50%),
+                     radial-gradient(circle at 40% 40%, hsl(var(--ieee-cyan) / 0.05) 0%, transparent 50%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsl(var(--ieee-blue) / 0.1);
+    --shadow-md: 0 4px 12px hsl(var(--ieee-blue) / 0.15);
+    --shadow-lg: 0 8px 24px hsl(var(--ieee-blue) / 0.2);
+    --shadow-glow: 0 0 20px hsl(var(--ieee-blue) / 0.3);
+    
+    /* Animations */
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +133,221 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-mesh);
   }
+}
+
+/* IEEE 3D Animations & Effects */
+@layer utilities {
+  /* 3D Transform Utilities */
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  /* Floating Elements */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+  
+  /* Glow Effects */
+  .glow-ieee {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Gradient Text */
+  .gradient-text-ieee {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* 3D Card Effects */
+  .card-3d {
+    transition: var(--transition-smooth);
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
+  }
+  
+  /* IEEE Hover Animations */
+  .ieee-hover {
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ieee-hover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, hsl(var(--ieee-blue) / 0.1), transparent);
+    transform: rotate(45deg) translateX(-100%);
+    transition: transform 0.6s;
+  }
+  
+  .ieee-hover:hover::before {
+    transform: rotate(45deg) translateX(100%);
+  }
+  
+  /* Particle Background */
+  .particles-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .particle {
+    position: absolute;
+    background: hsl(var(--ieee-blue) / 0.3);
+    border-radius: 50%;
+    animation: particleFloat 15s linear infinite;
+  }
+  
+  /* IEEE Button Variants */
+  .btn-ieee-primary {
+    background: var(--gradient-hero);
+    color: hsl(var(--primary-foreground));
+    border: none;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
+  }
+  
+  .btn-ieee-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-ieee-outline {
+    background: transparent;
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+    transition: var(--transition-base);
+  }
+  
+  .btn-ieee-outline:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px);
+  }
+}
+
+/* Keyframes for Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate3D {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes pulse3D {
+  0%, 100% {
+    transform: scale(1) rotateY(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotateY(180deg);
+  }
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-rotate-3d {
+  animation: rotate3D 10s linear infinite;
+}
+
+.animate-pulse-3d {
+  animation: pulse3D 4s ease-in-out infinite;
 }
