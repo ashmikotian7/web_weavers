@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { 
   Menu, 
@@ -17,6 +17,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,11 +84,19 @@ const Navigation = () => {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button variant="outline" size="sm" className="ieee-hover">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="ieee-hover"
+              onClick={() => navigate("/login")}
+            >
               <LogIn className="w-4 h-4 mr-2" />
               Login
             </Button>
-            <Button className="btn-ieee-primary">
+            <Button 
+              className="btn-ieee-primary"
+              onClick={() => navigate("/signup")}
+            >
               <User className="w-4 h-4 mr-2" />
               Join IEEE
             </Button>
@@ -142,11 +151,24 @@ const Navigation = () => {
                 
                 {/* Mobile Auth */}
                 <div className="pt-4 border-t border-border space-y-2">
-                  <Button variant="outline" className="w-full ieee-hover">
+                  <Button 
+                    variant="outline" 
+                    className="w-full ieee-hover"
+                    onClick={() => {
+                      navigate("/login");
+                      setIsOpen(false);
+                    }}
+                  >
                     <LogIn className="w-4 h-4 mr-2" />
                     Login
                   </Button>
-                  <Button className="w-full btn-ieee-primary">
+                  <Button 
+                    className="w-full btn-ieee-primary"
+                    onClick={() => {
+                      navigate("/signup");
+                      setIsOpen(false);
+                    }}
+                  >
                     <User className="w-4 h-4 mr-2" />
                     Join IEEE
                   </Button>

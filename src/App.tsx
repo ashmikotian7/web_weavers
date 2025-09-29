@@ -10,7 +10,9 @@ import Achievements from "./pages/Achievements";
 import Publications from "./pages/Publications";
 import Societies from "./pages/Societies";
 import NotFound from "./pages/NotFound";
-
+import Login from "./pages/login";
+import Footer from "./components/layout/footer";
+import Signup from "./pages/signup";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,7 +28,9 @@ const App = () => (
           <Route path="/achievements" element={<Achievements />} />
           <Route path="/publications" element={<Publications />} />
           <Route path="/societies" element={<Societies />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/footer" element={<Footer />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
