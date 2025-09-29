@@ -55,15 +55,6 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* IEEE Badge */}
-          <div className="inline-flex items-center space-x-2 bg-background/80 backdrop-blur-sm rounded-full px-6 py-3 border border-border/50 animate-fade-in-scale">
-            <div className="w-6 h-6 bg-gradient-hero rounded-full flex items-center justify-center">
-              <span className="text-white text-xs font-bold">IEEE</span>
-            </div>
-            <span className="text-sm font-medium text-muted-foreground">
-              Official Student Branch
-            </span>
-          </div>
 
           {/* Main Heading */}
           <div className="space-y-4 animate-fade-in-up">

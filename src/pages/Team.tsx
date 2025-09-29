@@ -1,15 +1,15 @@
 import Navigation from "@/components/layout/Navigation";
-import HeroSection from "@/components/sections/HeroSection";
+import TeamSection from "@/components/sections/TeamSection";
 
-const Index = () => {
+const Team = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <main>
-        <HeroSection />
+      <main className="pt-16">
+        <TeamSection />
       </main>
     </div>
   );
 };
 
-export default Index;
+export default Team;
